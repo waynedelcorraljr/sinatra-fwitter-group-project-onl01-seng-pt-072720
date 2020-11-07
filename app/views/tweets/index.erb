@@ -1,0 +1,8 @@
+<h1>Welcome, <%= User.find(session[:user_id]).slug %>!</h1>
+
+<% Tweet.all.reverse.each do |t| %>
+    <br><a href="/tweets/<%= t.id %>"><%= t.content %></a><br>
+    Post ID:<%= t.id %><br>
+<% end %>
+
+<br><br><a href="/users/<%= User.find(session[:user_id]).slug %>">Home</a>

@@ -1,0 +1,17 @@
+<h1>Welcome back, <%= @user.username %>!</h1>
+
+<h4><a href="/tweets/new">Twit a Tweet</a></h4>
+<h4><a href="/tweets">View All Tweets</a></h4>
+
+<h2>Your Tweets:</h2>
+    <% if @user.tweets.empty? %>
+        <a href="/tweets/new">No tweets, lots of empty. Get to tweeting!</a><br><br>
+    <% else %>
+        <% @user.tweets.each do |t| %> 
+            <%= t.content %><br>
+        <% end %>
+    <% end %>
+    
+
+
+<a href="/logout">Log Out</a>
