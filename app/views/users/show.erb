@@ -8,7 +8,7 @@
         <a href="/tweets/new">No tweets, lots of empty. Get to tweeting!</a><br><br>
     <% else %>
         <% @user.tweets.each do |t| %> 
-            <%= t.content %><br>
+            <p><%= t.content %></p><br>
         <% end %>
     <% end %>
     
