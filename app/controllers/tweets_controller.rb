@@ -35,7 +35,7 @@ class TweetsController < ApplicationController
     post '/tweets' do
         if !params[:content].empty?
             @user = User.find(session[:user_id])
-            @tweet = Tweet.create(content: params[:content], user_id: session[:user_id]) 
+            @tweet = Tweet.create(content: params[:content] unless params[:content].empty?, user_id: session[:user_id]) 
             redirect "/users/#{@user.slug}"
         else
             redirect "/tweets/new"
@@ -46,7 +46,7 @@ class TweetsController < ApplicationController
         
         if !params[:content].empty?
             @tweet = Tweet.find(params[:id])
-            @tweet.update(content: params[:content]) 
+            @tweet.update(content: params[:content] unless params[:content].empty?) 
             redirect "/tweets/#{@tweet.id}"
         else
             redirect "/tweets/#{@tweet.id}/edit"
